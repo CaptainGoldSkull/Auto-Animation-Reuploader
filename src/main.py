@@ -115,7 +115,7 @@ def updateFile():
     sys.exit()
 
 
-async def publishAssetAsync(session, oldId, name, creatorId, isGroup):
+async def publishAssetAsync(session, oldId, name, creatorId, isGroup,uploadType):
     global completedAnimations, XSRFToken, cookie, idsUploaded
     newAnimationId = None
     animationData = None  
@@ -133,7 +133,7 @@ async def publishAssetAsync(session, oldId, name, creatorId, isGroup):
         publishRequest = await sendRequestAsync(
             session,
             "post",
-            endpoints.getPublishUrl("Animation", name, creatorId, isGroup),
+            endpoints.getPublishUrl("Audio", name, creatorId, isGroup),
             cookies={ ".ROBLOSECURITY": cookie },
             headers={ "X-CSRF-TOKEN": XSRFToken,  "User-Agent": "RobloxStudio/WinInet" },
             data=animationData
